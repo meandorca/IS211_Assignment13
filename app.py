@@ -123,9 +123,15 @@ def student_results(student_id):
 
     results = db.execute(
         """
-        SELECT quiz_id, score
+        SELECT
+            quizzes.id AS quiz_id,
+            quizzes.subject,
+            quizzes.quiz_date,
+            results.score
         FROM results
-        WHERE student_id = ?
+        JOIN quizzes
+            ON results.quiz_id = quizzes.id
+        WHERE results.student_id = ?
         """,
         (student_id,)
     ).fetchall()
