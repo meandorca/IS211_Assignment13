@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Results</title>
+</head>
+<body>
+
+    <h1>Quiz Results for Student {{ student_id }}</h1>
+
+    {% if results %}
+        <table border="1">
+            <tr>
+                <th>Quiz ID</th>
+                <th>Score</th>
+            </tr>
+
+            {% for result in results %}
+            <tr>
+                <td>{{ result.quiz_id }}</td>
+                <td>{{ result.score }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>No Results</p>
+    {% endif %}
+
+    <br>
+    <a href="/dashboard">Back to Dashboard</a>
+
+</body>
+</html>
